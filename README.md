@@ -598,12 +598,11 @@ We're not just building another AI wrapper—we're building the infrastructure f
 
 **Team TinyFish Agent**  
 Aryan Barde: [GitHub](https://github.com/aryanbarde80) | [LinkedIn](https://linkedin.com/in/aryanbarde)  
-Vishal Jha: [GitHub](https://github.com/vishaljha) | [LinkedIn](https://linkedin.com/in/vishaljha)  
+Vishal Jha: [GitHub](https://github.com/vishaljha04) | [LinkedIn](https://www.linkedin.com/in/vishal-jha-897a7b256/)  
 
 **Project Links:**  
 🌐 Live Demo: [https://tinyfish.trisightglobalsolutions.in](https://tinyfish.trisightglobalsolutions.in)  
-📂 Source Code: [https://github.com/aryanbarde80/Tiny-ML-Hackathon](https://github.com/aryanbarde80/Tiny-ML-Hackathon)  
-🐦 X Post: [https://x.com/team/status/...](https://x.com/team/status/...)  
+📂 Source Code: [https://github.com/aryanbarde80/Tiny-ML-Hackathon](https://github.com/aryanbarde80/Tiny-ML-Hackathon)    
 
 ---
 
