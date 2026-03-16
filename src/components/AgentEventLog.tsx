@@ -1,6 +1,14 @@
 import { useRef, useEffect } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { CheckCircle2, AlertCircle, Loader2, Monitor, MousePointer, Eye, Type } from "lucide-react";
+import {
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  Monitor,
+  MousePointer,
+  Eye,
+  Type,
+} from "lucide-react";
 
 export interface AgentEvent {
   id: string;
@@ -17,12 +25,18 @@ interface AgentEventLogProps {
 }
 
 const getEventIcon = (type: string, status?: string) => {
-  if (status === "COMPLETED") return <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />;
-  if (status === "FAILED" || status === "ERROR") return <AlertCircle className="w-4 h-4 text-destructive shrink-0" />;
-  if (type === "NAVIGATE" || type === "navigation") return <Globe className="w-4 h-4 text-accent shrink-0" />;
-  if (type === "CLICK" || type === "click") return <MousePointer className="w-4 h-4 text-accent shrink-0" />;
-  if (type === "TYPE" || type === "type") return <Type className="w-4 h-4 text-accent shrink-0" />;
-  if (type === "SCREENSHOT" || type === "screenshot") return <Eye className="w-4 h-4 text-muted-foreground shrink-0" />;
+  if (status === "COMPLETED")
+    return <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />;
+  if (status === "FAILED" || status === "ERROR")
+    return <AlertCircle className="w-4 h-4 text-destructive shrink-0" />;
+  if (type === "NAVIGATE" || type === "navigation")
+    return <Globe className="w-4 h-4 text-accent shrink-0" />;
+  if (type === "CLICK" || type === "click")
+    return <MousePointer className="w-4 h-4 text-accent shrink-0" />;
+  if (type === "TYPE" || type === "type")
+    return <Type className="w-4 h-4 text-accent shrink-0" />;
+  if (type === "SCREENSHOT" || type === "screenshot")
+    return <Eye className="w-4 h-4 text-muted-foreground shrink-0" />;
   return <Monitor className="w-4 h-4 text-muted-foreground shrink-0" />;
 };
 
@@ -60,11 +74,15 @@ const AgentEventLog = ({ events, isRunning }: AgentEventLogProps) => {
                   {event.type}
                 </span>
                 {event.status && (
-                  <span className={`text-xs px-1.5 py-0.5 rounded ${
-                    event.status === "COMPLETED" ? "bg-primary/20 text-primary" :
-                    event.status === "FAILED" ? "bg-destructive/20 text-destructive" :
-                    "bg-muted text-muted-foreground"
-                  }`}>
+                  <span
+                    className={`text-xs px-1.5 py-0.5 rounded ${
+                      event.status === "COMPLETED"
+                        ? "bg-primary/20 text-primary"
+                        : event.status === "FAILED"
+                          ? "bg-destructive/20 text-destructive"
+                          : "bg-muted text-muted-foreground"
+                    }`}
+                  >
                     {event.status}
                   </span>
                 )}

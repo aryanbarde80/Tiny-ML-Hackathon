@@ -1,73 +1,82 @@
-# Welcome to your Lovable project
+# TinyFish Agent - AI-Powered Browser Automation
 
-## Project info
+TinyFish Agent is a modern web application that leverages the power of **TinyFish AI** to perform autonomous browser automation tasks. Built with a robust and scalable tech stack, it provides a seamless interface for users to define goals and watch as an AI agent navigates websites to achieve them in real-time.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🚀 Features
 
-## How can I edit this code?
+- **Autonomous Browser Automation**: Simply provide a target URL and a goal, and the AI agent will handle the rest.
+- **Real-time Activity Streaming**: Watch the agent's thought process and actions as they happen through a live event log.
+- **Secure Proxy Architecture**: Uses Supabase Edge Functions to securely communicate with the TinyFish AI API, protecting sensitive credentials.
+- **Modern UI/UX**: A sleek, responsive interface built with React, Tailwind CSS, and shadcn/ui, featuring a terminal-style activity log.
+- **Type-Safe Development**: Fully implemented in TypeScript for enhanced developer productivity and code reliability.
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **State Management**: [TanStack Query (React Query)](https://tanstack.com/query/latest)
+- **Backend/Database**: [Supabase](https://supabase.com/)
+- **AI Engine**: [TinyFish AI](https://tinyfish.ai/)
+- **Testing**: [Vitest](https://vitest.dev/) & [Playwright](https://playwright.dev/)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📋 Prerequisites
 
-Changes made via Lovable will be committed automatically to this repo.
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/)
+- A [Supabase](https://supabase.com/) account
+- A [TinyFish AI](https://tinyfish.ai/) API Key
 
-**Use your preferred IDE**
+## ⚙️ Setup & Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/aryanbarde80/Tiny-ML-Hackathon.git
+   cd Tiny-ML-Hackathon
+   ```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-Follow these steps:
+3. **Environment Variables**:
+   Create a `.env` file in the root directory and add your Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4. **Supabase Edge Function Configuration**:
+   The agent requires a `TINYFISH_API_KEY` to be set in your Supabase project secrets:
+   ```bash
+   supabase secrets set TINYFISH_API_KEY=your_tinyfish_api_key
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+5. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 📖 Usage
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1. Open the application in your browser (usually at `http://localhost:8080`).
+2. Enter the **Target URL** of the website you want the agent to visit.
+3. Describe the **Task** in the text area (e.g., "Find the price of the latest iPhone and summarize the specs").
+4. Click **Launch Agent** and monitor the "Agent Activity" log for real-time updates.
+5. Once completed, the final result will be displayed in the "Result" section.
 
-**Edit a file directly in GitHub**
+## 🧪 Testing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The project includes both unit and end-to-end tests:
 
-**Use GitHub Codespaces**
+- **Unit Tests**: Run `npm run test`
+- **E2E Tests**: Run `npx playwright test`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 License
 
-## What technologies are used for this project?
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Built with ❤️ for the Tiny-ML Hackathon.

@@ -16,7 +16,9 @@ const Index = () => {
           </div>
           <div>
             <h1 className="text-xl font-bold text-gradient">TinyFish Agent</h1>
-            <p className="text-xs text-muted-foreground">AI-powered browser automation</p>
+            <p className="text-xs text-muted-foreground">
+              AI-powered browser automation
+            </p>
           </div>
           <div className="ml-auto flex items-center gap-2 text-xs text-muted-foreground">
             <Terminal className="w-3 h-3" />

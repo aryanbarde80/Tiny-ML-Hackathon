@@ -12,7 +12,12 @@ export const useTinyFishAgent = () => {
     setEvents([]);
     setResult(null);
 
-    const addEvent = (type: string, message: string, status?: string, raw?: any) => {
+    const addEvent = (
+      type: string,
+      message: string,
+      status?: string,
+      raw?: any,
+    ) => {
       setEvents((prev) => [
         ...prev,
         {
@@ -30,24 +35,31 @@ export const useTinyFishAgent = () => {
 
     try {
       // Get the Supabase URL for the edge function
-      const { data: { session } } = await supabase.auth.getSession();
-      
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
       const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-      const response = await fetch(`${supabaseUrl}/functions/v1/tinyfish-agent`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${session?.access_token || supabaseKey}`,
-          "apikey": supabaseKey,
+      const response = await fetch(
+        `${supabaseUrl}/functions/v1/tinyfish-agent`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session?.access_token || supabaseKey}`,
+            apikey: supabaseKey,
+          },
+          body: JSON.stringify({ url, goal }),
         },
-        body: JSON.stringify({ url, goal }),
-      });
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || `Request failed with status ${response.status}`);
+        throw new Error(
+          errorData.error || `Request failed with status ${response.status}`,
+        );
       }
 
       const reader = response.body?.getReader();
@@ -78,7 +90,9 @@ export const useTinyFishAgent = () => {
                 data.message ||
                 data.description ||
                 data.text ||
-                (data.resultJson ? JSON.stringify(data.resultJson, null, 2) : null) ||
+                (data.resultJson
+                  ? JSON.stringify(data.resultJson, null, 2)
+                  : null) ||
                 JSON.stringify(data);
 
               addEvent(eventType, message, status, data);
