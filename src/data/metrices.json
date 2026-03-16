@@ -1,0 +1,52 @@
+{
+  "taskCategories": [
+    {
+      "name": "Price monitoring",
+      "successRate": "98.3%",
+      "avgTime": "2.4s",
+      "stdDev": "0.8s",
+      "maxTime": "5.2s"
+    },
+    {
+      "name": "Login flows",
+      "successRate": "95.1%",
+      "avgTime": "5.7s",
+      "stdDev": "1.9s",
+      "maxTime": "12.8s"
+    },
+    {
+      "name": "Multi-page extraction",
+      "successRate": "96.2%",
+      "avgTime": "12.4s",
+      "stdDev": "3.4s",
+      "maxTime": "28.1s"
+    },
+    {
+      "name": "Search & filter",
+      "successRate": "97.5%",
+      "avgTime": "3.8s",
+      "stdDev": "1.2s",
+      "maxTime": "7.9s"
+    },
+    {
+      "name": "Checkout simulation",
+      "successRate": "94.3%",
+      "avgTime": "15.2s",
+      "stdDev": "4.1s",
+      "maxTime": "32.4s"
+    }
+  ],
+  "errorBreakdown": [
+    { "cause": "Element not found", "count": "342 (34.2%)", "percentage": "34.2%" },
+    { "cause": "Navigation timeout", "count": "187 (18.7%)", "percentage": "18.7%" },
+    { "cause": "CAPTCHA detected", "count": "156 (15.6%)", "percentage": "15.6%" },
+    { "cause": "Authentication failure", "count": "98 (9.8%)", "percentage": "9.8%" },
+    { "cause": "Rate limiting", "count": "76 (7.6%)", "percentage": "7.6%" }
+  ],
+  "recoveryRates": [
+    { "method": "Automatic retry", "rate": "78.3%" },
+    { "method": "Selector alternatives", "rate": "64.2%" },
+    { "method": "Session refresh", "rate": "52.1%" },
+    { "method": "User intervention", "rate": "95.4%" }
+  ]
+}

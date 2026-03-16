@@ -17,7 +17,6 @@ const Footer: React.FC = () => {
   const quickLinks: FooterLink[] = [
     { name: "Home", path: "/" },
     { name: "Agent", path: "/agent" },
-    { name: "API", path: "/api" },
     { name: "Docs", path: "/docs" },
   ];
 
@@ -96,18 +95,7 @@ const Footer: React.FC = () => {
                   />
                 </a>
               </li>
-              <li>
-                <a
-                  href="/api"
-                  className="text-neutral-500 hover:text-white text-sm transition-colors inline-flex items-center gap-1 group"
-                >
-                  API Reference
-                  <ArrowUpRight
-                    size={12}
-                    className="opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all"
-                  />
-                </a>
-              </li>
+             
             </ul>
           </div>
 
