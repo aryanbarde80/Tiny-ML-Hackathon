@@ -231,7 +231,7 @@ const DocSidebar: React.FC<DocSidebarProps> = ({
         {/* Footer */}
         <div className="p-4 border-t border-white/[0.08] bg-black/50">
           <div className="flex items-center justify-between text-xs text-gray-600">
-            <span>© 2026 TriSight Global</span>
+            <span>© 2026 Web Automation</span>
             <span className="flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
               v1.0.0

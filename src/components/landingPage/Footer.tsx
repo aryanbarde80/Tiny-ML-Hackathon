@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Twitter, Linkedin, Fish, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Fish, ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 interface FooterLink {
@@ -7,17 +7,24 @@ interface FooterLink {
   path: string;
 }
 
-interface SocialLink {
-  name: string;
-  href: string;
-  icon: React.ReactNode;
-}
-
 const Footer: React.FC = () => {
   const quickLinks: FooterLink[] = [
     { name: "Home", path: "/" },
     { name: "Agent", path: "/agent" },
     { name: "Docs", path: "/docs" },
+  ];
+
+  const team = [
+    {
+      name: "Aryan Barde",
+      github: "https://github.com/aryanbarde80",
+      linkedin: "https://www.linkedin.com/in/aryanbarde80/",
+    },
+    {
+      name: "Vishal Jha",
+      github: "https://github.com/vishaljha04",
+      linkedin: "https://www.linkedin.com/in/vishal-jha-897a7b256/",
+    },
   ];
 
   return (
@@ -95,7 +102,6 @@ const Footer: React.FC = () => {
                   />
                 </a>
               </li>
-             
             </ul>
           </div>
 
@@ -104,12 +110,41 @@ const Footer: React.FC = () => {
             <h3 className="text-[11px] font-mono text-neutral-600 uppercase tracking-[0.2em] mb-4">
               Built By
             </h3>
-            <div className="space-y-2">
-              <p className="text-neutral-400 text-sm">Aryan Barde</p>
-              <p className="text-neutral-400 text-sm">Vishal Jha</p>
+            <div className="space-y-4">
+              {team.map((member) => (
+                <div key={member.name} className="group">
+                  <p className="text-neutral-300 text-sm font-medium mb-1.5">
+                    {member.name}
+                  </p>
+                  <div className="flex items-center gap-1.5">
+                    <a
+                      href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 rounded-md bg-neutral-900 border border-neutral-800 hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-200 group/icon"
+                      aria-label={`${member.name} GitHub`}
+                    >
+                      <Github
+                        size={13}
+                        className="text-neutral-500 group-hover/icon:text-white transition-colors"
+                      />
+                    </a>
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 rounded-md bg-neutral-900 border border-neutral-800 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-200 group/icon"
+                      aria-label={`${member.name} LinkedIn`}
+                    >
+                      <Linkedin
+                        size={13}
+                        className="text-neutral-500 group-hover/icon:text-indigo-400 transition-colors"
+                      />
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            
           </div>
         </div>
 
