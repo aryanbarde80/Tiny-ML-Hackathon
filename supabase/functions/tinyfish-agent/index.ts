@@ -22,8 +22,10 @@ Deno.serve(async (req) => {
       );
     }
 
-    const apiKey = Deno.env.get("TINYFISH_API_KEY");
-    if (!apiKey) {
+    const primaryApiKey = Deno.env.get("TINYFISH_API_KEY");
+    const secondaryApiKey = Deno.env.get("TINYFISH_SECONDARY_API_KEY");
+
+    if (!primaryApiKey) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -36,24 +38,66 @@ Deno.serve(async (req) => {
       );
     }
 
-    const response = await fetch(
-      "https://agent.tinyfish.ai/v1/automation/run-sse",
-      {
-        method: "POST",
-        headers: {
-          "X-API-Key": apiKey,
-          "Content-Type": "application/json",
+    let response: Response;
+    let usedApiKey = primaryApiKey;
+
+    try {
+      response = await fetch(
+        "https://agent.tinyfish.ai/v1/automation/run-sse",
+        {
+          method: "POST",
+          headers: {
+            "X-API-Key": primaryApiKey,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ url, goal }),
         },
-        body: JSON.stringify({ url, goal }),
-      },
-    );
+      );
+
+      // If primary key fails with specific status codes, try secondary key
+      if (!response.ok && [401, 403, 429].includes(response.status) && secondaryApiKey) {
+        console.warn(`Primary API key failed with status ${response.status}. Attempting with secondary key.`);
+        usedApiKey = secondaryApiKey;
+        response = await fetch(
+          "https://agent.tinyfish.ai/v1/automation/run-sse",
+          {
+            method: "POST",
+            headers: {
+              "X-API-Key": secondaryApiKey,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ url, goal }),
+          },
+        );
+      }
+    } catch (fetchError) {
+      console.error("Error during TinyFish API fetch:", fetchError);
+      // If primary fetch fails, and secondary key exists, try secondary
+      if (secondaryApiKey) {
+        console.warn("Primary API key fetch failed. Attempting with secondary key.");
+        usedApiKey = secondaryApiKey;
+        response = await fetch(
+          "https://agent.tinyfish.ai/v1/automation/run-sse",
+          {
+            method: "POST",
+            headers: {
+              "X-API-Key": secondaryApiKey,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ url, goal }),
+          },
+        );
+      } else {
+        throw fetchError; // Re-throw if no secondary key or secondary also failed
+      }
+    }
 
     if (!response.ok) {
       const errorData = await response.text();
       return new Response(
         JSON.stringify({
           success: false,
-          error: `TinyFish API error [${response.status}]: ${errorData}`,
+          error: `TinyFish API error [${response.status}] with ${usedApiKey === primaryApiKey ? 'primary' : 'secondary'} key: ${errorData}`,
         }),
         {
           status: response.status,
