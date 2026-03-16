@@ -71,7 +71,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/aryanbarde80/Tiny-ML-Hackathon"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-neutral-500 hover:text-white text-sm transition-colors inline-flex items-center gap-1 group"
