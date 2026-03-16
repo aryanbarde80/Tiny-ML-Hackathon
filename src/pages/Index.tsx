@@ -1,7 +1,7 @@
 import AgentTaskForm from "@/components/AgentTaskForm";
 import AgentEventLog from "@/components/AgentEventLog";
 import { useTinyFishAgent } from "@/hooks/useTinyFishAgent";
-import { Bot, Terminal } from "lucide-react";
+import { Zap, Terminal } from "lucide-react";
 
 const Index = () => {
   const { events, isRunning, result, runAgent } = useTinyFishAgent();
@@ -12,7 +12,7 @@ const Index = () => {
       <header className="border-b border-border/50 py-6">
         <div className="max-w-4xl mx-auto px-6 flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg bg-primary/10 glow-border flex items-center justify-center">
-            <Bot className="w-5 h-5 text-primary" />
+            <Zap className="w-5 h-5 text-primary" />
           </div>
           <div>
             <h1 className="text-xl font-bold text-gradient">TinyFish Agent</h1>
